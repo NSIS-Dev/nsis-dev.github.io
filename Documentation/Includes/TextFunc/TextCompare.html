@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><script type="text/javascript">WebFontConfig={google:{families:["Fira+Sans:300,400:latin","Fira+Mono::latin"]}},function(){var t=document.createElement("script");t.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js",t.type="text/javascript",t.async="true";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();</script><title>${TextCompare} | TextFunc.nsh</title><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><link rel="prefetch" href="data/documentation.json" data-sha1=""><link rel="stylesheet" href="#default" class="hljs-theme"><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'"><link rel="preload" href="../../../assets/css/nsis.min.css" as="style" onload="this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="../../../assets/css/nsis.min.css"></noscript><script>!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);</script></head><body class="hljs-dark" data-search="data/documentation.json" data-sha1=""><nav class="navbar navbar-default navbar-fixed-top"><div id="nav-container" class="container"><div class="row"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nsis-navbar-collapse"><i class="fa fa-menu"></i></button> <a class="navbar-brand" href="../../..//index.html">NSIS</a></div><div class="collapse navbar-collapse" id="nsis-navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="#">Get started</a></li><li><a href="#">Documentation</a></li><li><a href="#">Plugins</a></li><li id="links-menu" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li><a href="#wiki">Wiki</a></li><li><a href="http://forums.winamp.com/forumdisplay.php?forumid=65">Forum</a></li><li><a href="#">Issues</a></li><li><a href="http://nsis-dev.tumblr.com/">Blog</a></li><li class="divider"></li><li><a href="https://github.com/NSIS-Dev">GitHub</a></li><li><a href="http://sourceforge.net/projects/nsis">SourceForge</a></li><li><a href="http://twitter.com/nsis_tweets">Twitter</a></li></ul></li><li id="bookmarks-menu" class="dropdown hidden"><a href="#" class="narrow dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bookmark hidden-xs"></i><span class="visible-xs">Bookmarks <span class="caret"></span></span></a><ul class="dropdown-menu" role="menu"><li><a href="#" class="manage-bookmarks">Manage bookmarks</a></li><li><a href="#" class="save-bookmark">Bookmark this page</a></li><li><a href="#" class="sort-bookmarks">Sort bookmarks</a></li><li class="divider"></li></ul></li><li><a href="#" class="narrow setup-page"><i class="fa fa-adjust hidden-xs"></i><span class="visible-xs">Settings</span></a></li><li><form id="search-form" class="navbar-form navbar-left" method="get" action="http://duckduckgo.com/"><div class="form-group"><input id="search-input" type="text" name="q" class="form-control ui-autocomplete-input" placeholder="Search" autocomplete="off"></div></form></li></ul></div></div></div></nav><div id="content"><div class="container"><div class="row"><div class="col-xs-10 col-sm-9 col-md-9 col-lg-9 bg-white"><h1 id="-textcompare-">${TextCompare}</h1><p>Compare two text files.</p><h2 id="syntax">Syntax</h2><pre><code>${TextCompare} &quot;[File1]&quot; &quot;[File2]&quot; &quot;[Option]&quot; &quot;Function&quot;
+
+&quot;[File1]&quot;     ; File1      Compare these lines
+&quot;[File2]&quot;     ; File2      Compare with these lines
+&quot;[Options]&quot;   ; (line-by-line):
+              ; FastDiff   Compare line N (File1) with line N (File2)
+              ;            Call function if Different lines found
+              ; FastEqual  Compare line N (File1) with line N (File2)
+              ;            Call function if Equal lines found
+              ; (line number independent):
+              ; SlowDiff   Compare line N (File1) with all lines (File2)
+              ;            Call function if line N (File1) Different
+              ; SlowEqual  Compare line N (File1) with all lines (File2)
+              ;            Call function if line N (File1) Equal
+&quot;Function&quot;    ; Callback function
+
+Function &quot;Function&quot;
+    ; $9    &quot;Line File1&quot;
+    ; $8    &quot;Line number&quot;
+    ; $7    &quot;Line File2&quot;  (empty if SlowDiff)
+    ; $6    &quot;Line number&quot; (empty if SlowDiff)
+
+    ; $R0-$R9  are not used (save data in them).
+    ; ...
+
+    Push $var    ; If $var=&quot;StopTextCompare&quot;  Then exit from function
+FunctionEnd
+</code></pre><p>Note:</p><ul><li>Error flag if File1 or File2 doesn&#39;t exist</li><li>Error flag if syntax error</li></ul><h2 id="examples">Examples</h2><h3 id="different-or-equal">Different or Equal</h3><pre><code>Section
+    StrCpy $R0 &#39;&#39;
+    ${TextCompare} &quot;C:\1.txt&quot; &quot;C:\2.txt&quot; &quot;FastDiff&quot; &quot;Example1&quot;
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot; IDOK +4
+
+    StrCmp $R0 NotEqual 0 +2
+    MessageBox MB_OK &quot;Files differ&quot; IDOK +2
+    MessageBox MB_OK &quot;Files identical&quot;
+SectionEnd
+
+Function Example1
+    StrCpy $R0 NotEqual
+    StrCpy $0 StopTextCompare
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="compare-line-by-line-different">Compare line-by-line - Different</h3><pre><code>Section
+    StrCpy $R0 &#39;Text1.txt&#39;
+    StrCpy $R1 &#39;Text2.txt&#39;
+
+    GetTempFileName $R2
+    FileOpen $R3 $R2 w
+    FileWrite $R3 &quot;$R0 | $R1$\r$\n&quot;
+    ${TextCompare} &quot;$R0&quot; &quot;$R1&quot; &quot;FastDiff&quot; &quot;Example2&quot;
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot; IDOK +2
+
+    Exec &quot;notepad.exe $R2&quot;
+FunctionEnd
+
+Function Example2
+    FileWrite $R3 &#39;$8=$9&#39;
+    FileWrite $R3 &#39;$6=$7$\r$\n&#39;
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="compare-line-by-line-equal">Compare line-by-line - Equal</h3><pre><code>Section
+    StrCpy $R0 &#39;Text1.txt&#39;
+    StrCpy $R1 &#39;Text2.txt&#39;
+
+    GetTempFileName $R2
+    FileOpen $R3 $R2 w
+    FileWrite $R3 &quot;$R0 | $R1$\r$\n&quot;
+    ${TextCompare} &quot;$R0&quot; &quot;$R1&quot; &quot;FastEqual&quot; &quot;Example3&quot;
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot; IDOK +2
+
+    Exec &quot;notepad.exe $R2&quot;
+FunctionEnd
+
+Function Example3
+    FileWrite $R3 &#39;$8|$6=$9&#39;
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="compare-all-lines-different">Compare all lines - Different</h3><pre><code>Section
+    StrCpy $R0 &#39;Text1.txt&#39;
+    StrCpy $R1 &#39;Text2.txt&#39;
+
+    GetTempFileName $R2
+    FileOpen $R3 $R2 w
+    FileWrite $R3 &quot;$R0 | $R1$\r$\n&quot;
+    ${TextCompare} &quot;$R0&quot; &quot;$R1&quot; &quot;SlowDiff&quot; &quot;Example4&quot;
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot; IDOK end
+
+    FileWrite $R3 &quot;$\r$\n$R1 | $R0$\r$\n&quot;
+    ${TextCompare} &quot;$R1&quot; &quot;$R0&quot; &quot;SlowDiff&quot; &quot;Example4&quot;
+    FileClose $R3
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot; IDOK end
+
+    Exec &quot;notepad.exe $R2&quot;
+
+    end:
+FunctionEnd
+
+Function Example4
+    FileWrite $R3 &#39;$8=$9&#39;
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="compare-all-lines-equal">Compare all lines - Equal</h3><pre><code>Section
+    StrCpy $R0 &#39;Text1.txt&#39;
+    StrCpy $R1 &#39;Text2.txt&#39;
+
+    GetTempFileName $R2
+    FileOpen $R3 $R2 w
+    FileWrite $R3 &quot;$R0 | $R1$\r$\n&quot;
+    ${TextCompare} &quot;$R0&quot; &quot;$R1&quot; &quot;SlowEqual&quot; &quot;Example5&quot;
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot; IDOK +2
+
+    Exec &quot;notepad.exe $R2&quot;
+FunctionEnd
+
+Function Example5
+    FileWrite $R3 &#39;$8|$6=$9&#39;
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="show-variables">Show variables</h3><pre><code>Section
+    ${TextCompare} &quot;C:\1.txt&quot; &quot;C:\2.txt&quot; &quot;FastDiff&quot; &quot;Example6&quot;
+
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot;
+SectionEnd
+
+Function Example6
+    MessageBox MB_OKCANCEL &#39;$$9    &quot;Line File1&quot; =[$9]$\n$$8    &quot;Line #&quot;      =[$8]$\n$$7    &quot;Line File2&quot; =[$7]$\n$$6    &quot;Line #&quot;      =[$6]&#39; IDOK +2
+    StrCpy $0 StopTextCompare
+
+    Push $0
+FunctionEnd
+</code></pre><h2 id="credits">Credits</h2><p>Written by <a href="http://nsis.sourceforge.net/User:Instructor">Instructor</a></p></div><div class="col-xs-2 col-sm-3 col-md-3 col-lg-3 well"><ul class="nav flex-column"><li class="nav-item"><a class="nav-link" href="https://github.com/NSIS-Dev/Documentation/edit/master/Includes/TextFunc/TextCompare.md#ghLink"><i class="fa fa-lg fa-fw fa-edit"></i><span class="hidden-sm-down">Edit on GitHub</span></a><p class="hidden-sm-down">Help us improve this documentation by editing its sources directly on the GitHub repository.</p></li><li class="nav-item"><a class="nav-link save-bookmark" href="#save-bookmark"><i class="fa fa-lg fa-fw fa-bookmark"></i><span class="hidden-sm-down">Bookmark page</span></a><p class="hidden-sm-down">Save frequently visited pages to your browser's localStorage for quick access. Bookmarks will be available through the top menu.</p></li><li class="nav-item"><a class="nav-link to-instapaper" href="#to-instapaper"><i class="fa fa-lg fa-fw fa-thumb-tack"></i><span class="hidden-sm-down">Save to Instapaper</span></a></li></ul></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" defer="defer"></script><script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" defer="defer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" defer="defer"></script><script src="../../../assets/js/highlight.pack.js" defer="defer"></script><script src="../../../assets/js/nsis.min.js" defer="defer"></script></body></html>

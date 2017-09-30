@@ -1,0 +1,223 @@
+/*
+ *  GLOBAL STYLES
+ */
+.hljs-dark .hljs,
+.hljs-light .hljs {
+  overflow-x: auto;
+  padding: 1em;
+  -webkit-text-size-adjust: none;
+}
+.hljs-dark .coffeescript .javascript,
+.hljs-light .coffeescript .javascript,
+.hljs-dark .javascript .xml,
+.hljs-light .javascript .xml,
+.hljs-dark .tex .hljs-formula,
+.hljs-light .tex .hljs-formula,
+.hljs-dark .xml .css,
+.hljs-light .xml .css,
+.hljs-dark .xml .hljs-cdata,
+.hljs-light .xml .hljs-cdata,
+.hljs-dark .xml .javascript,
+.hljs-light .xml .javascript,
+.hljs-dark .xml .vbscript,
+.hljs-light .xml .vbscript,
+.hljs-dark .coffeescript .javascript,
+.hljs-light .coffeescript .javascript,
+.hljs-dark .javascript .xml,
+.hljs-light .javascript .xml,
+.hljs-dark .tex .hljs-formula,
+.hljs-light .tex .hljs-formula,
+.hljs-dark .xml .css,
+.hljs-light .xml .css,
+.hljs-dark .xml .hljs-cdata,
+.hljs-light .xml .hljs-cdata,
+.hljs-dark .xml .javascript,
+.hljs-light .xml .javascript,
+.hljs-dark .xml .vbscript,
+.hljs-light .xml .vbscript {
+  opacity: 0.5;
+}
+/*
+ *  DARK STYLES
+ */
+.hljs-dark {
+  /* base08 = Red */
+  /* base09 = Orange */
+  /* base0A = Yellow */
+  /* base0B - Green */
+  /* base0C - Aqua */
+  /* base0D - Blue */
+  /* base0E - Purple */
+  /* base00 - White */
+}
+.hljs-dark pre {
+  background-color: #322931;
+}
+.hljs-dark .hljs-comment {
+  color: #989498;
+}
+.hljs-dark .css .hljs-class,
+.hljs-dark .css .hljs-id,
+.hljs-dark .css .hljs-pseudo,
+.hljs-dark .hljs-attribute,
+.hljs-dark .hljs-name,
+.hljs-dark .hljs-regexp,
+.hljs-dark .hljs-tag,
+.hljs-dark .hljs-variable,
+.hljs-dark .html .hljs-doctype,
+.hljs-dark .ruby .hljs-constant,
+.hljs-dark .xml .hljs-doctype,
+.hljs-dark .xml .hljs-pi,
+.hljs-dark .xml .hljs-tag .hljs-title {
+  color: #dd464c;
+}
+.hljs-dark .diff .hljs-deletion {
+  background-color: #dd464c;
+}
+.hljs-dark .hljs-built_in,
+.hljs-dark .hljs-constant,
+.hljs-dark .hljs-literal,
+.hljs-dark .hljs-number,
+.hljs-dark .hljs-params,
+.hljs-dark .hljs-preprocessor {
+  color: #fd8b19;
+}
+.hljs-dark .css .hljs-rule .hljs-attribute,
+.hljs-dark .ruby .hljs-class .hljs-title {
+  color: #fdcc59;
+}
+.hljs-dark .hljs-header,
+.hljs-dark .hljs-inheritance,
+.hljs-dark .hljs-string,
+.hljs-dark .hljs-value,
+.hljs-dark .ruby .hljs-symbol,
+.hljs-dark .xml .hljs-cdata {
+  color: #8fc13e;
+}
+.hljs-dark .diff .hljs-addition {
+  background-color: #8fc13e;
+}
+.hljs-dark .css .hljs-hexcolor,
+.hljs-dark .hljs-title {
+  color: #149b93;
+}
+.hljs-dark .coffeescript .hljs-title,
+.hljs-dark .hljs-function,
+.hljs-dark .javascript .hljs-title,
+.hljs-dark .perl .hljs-sub,
+.hljs-dark .python .hljs-decorator,
+.hljs-dark .python .hljs-title,
+.hljs-dark .ruby .hljs-function .hljs-title,
+.hljs-dark .ruby .hljs-title .hljs-keyword {
+  color: #1290bf;
+}
+.hljs-dark .diff .hljs-change {
+  color: #1290bf;
+}
+.hljs-dark .hljs-keyword,
+.hljs-dark .javascript .hljs-function {
+  color: #c85e7c;
+}
+.hljs-dark .diff .hljs-addition,
+.hljs-dark .diff .hljs-deletion {
+  color: #322931;
+  display: inline-block;
+  width: 100%;
+}
+.hljs-dark .hljs {
+  display: block;
+  background: #322931;
+  color: #b9b5b8;
+}
+/*
+ *  LIGHT STYLES
+ */
+.hljs-light {
+  /* base08 = Red */
+  /* base09 = Orange */
+  /* base0A = Yellow */
+  /* base0B = Green */
+  /* base0C = Aqua */
+  /* base0D = Blue */
+  /* base0E = Purple */
+  /* base00 - White */
+}
+.hljs-light pre {
+  background-color: #fef7f4;
+}
+.hljs-light .hljs-comment {
+  color: #797379;
+}
+.hljs-light .css .hljs-class,
+.hljs-light .css .hljs-id,
+.hljs-light .css .hljs-pseudo,
+.hljs-light .hljs-attribute,
+.hljs-light .hljs-name,
+.hljs-light .hljs-regexp,
+.hljs-light .hljs-tag,
+.hljs-light .hljs-variable,
+.hljs-light .html .hljs-doctype,
+.hljs-light .ruby .hljs-constant,
+.hljs-light .xml .hljs-doctype,
+.hljs-light .xml .hljs-pi,
+.hljs-light .xml .hljs-tag .hljs-title {
+  color: #dd464c;
+}
+.hljs-light .diff .hljs-deletion {
+  background-color: #dd464c;
+}
+.hljs-light .hljs-built_in,
+.hljs-light .hljs-constant,
+.hljs-light .hljs-literal,
+.hljs-light .hljs-number,
+.hljs-light .hljs-params,
+.hljs-light .hljs-preprocessor {
+  color: #fd8b19;
+}
+.hljs-light .css .hljs-rule .hljs-attribute,
+.hljs-light .ruby .hljs-class .hljs-title {
+  color: #fdcc59;
+}
+.hljs-light .hljs-header,
+.hljs-light .hljs-inheritance,
+.hljs-light .hljs-string,
+.hljs-light .hljs-value,
+.hljs-light .ruby .hljs-symbol,
+.hljs-light .xml .hljs-cdata {
+  color: #8fc13e;
+}
+.hljs-light .diff .hljs-addition {
+  background-color: #8fc13e;
+}
+.hljs-light .css .hljs-hexcolor,
+.hljs-light .hljs-title {
+  color: #149b93;
+}
+.hljs-light .coffeescript .hljs-title,
+.hljs-light .hljs-function,
+.hljs-light .javascript .hljs-title,
+.hljs-light .perl .hljs-sub,
+.hljs-light .python .hljs-decorator,
+.hljs-light .python .hljs-title,
+.hljs-light .ruby .hljs-function .hljs-title,
+.hljs-light .ruby .hljs-title .hljs-keyword {
+  color: #1290bf;
+}
+.hljs-light .diff .hljs-change {
+  color: #1290bf;
+}
+.hljs-light .hljs-keyword,
+.hljs-light .javascript .hljs-function {
+  color: #c85e7c;
+}
+.hljs-light .diff .hljs-addition,
+.hljs-light .diff .hljs-deletion {
+  color: #322931;
+  display: inline-block;
+  width: 100%;
+}
+.hljs-light .hljs {
+  display: block;
+  background: #fef7f4;
+  color: #5c545b;
+}

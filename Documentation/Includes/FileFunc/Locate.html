@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><script type="text/javascript">WebFontConfig={google:{families:["Fira+Sans:300,400:latin","Fira+Mono::latin"]}},function(){var t=document.createElement("script");t.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js",t.type="text/javascript",t.async="true";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();</script><title>${Locate} | FileFunc.nsh</title><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><link rel="prefetch" href="data/documentation.json" data-sha1=""><link rel="stylesheet" href="#default" class="hljs-theme"><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'"><link rel="preload" href="../../../assets/css/nsis.min.css" as="style" onload="this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="../../../assets/css/nsis.min.css"></noscript><script>!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);</script></head><body class="hljs-dark" data-search="data/documentation.json" data-sha1=""><nav class="navbar navbar-default navbar-fixed-top"><div id="nav-container" class="container"><div class="row"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nsis-navbar-collapse"><i class="fa fa-menu"></i></button> <a class="navbar-brand" href="../../..//index.html">NSIS</a></div><div class="collapse navbar-collapse" id="nsis-navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="#">Get started</a></li><li><a href="#">Documentation</a></li><li><a href="#">Plugins</a></li><li id="links-menu" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li><a href="#wiki">Wiki</a></li><li><a href="http://forums.winamp.com/forumdisplay.php?forumid=65">Forum</a></li><li><a href="#">Issues</a></li><li><a href="http://nsis-dev.tumblr.com/">Blog</a></li><li class="divider"></li><li><a href="https://github.com/NSIS-Dev">GitHub</a></li><li><a href="http://sourceforge.net/projects/nsis">SourceForge</a></li><li><a href="http://twitter.com/nsis_tweets">Twitter</a></li></ul></li><li id="bookmarks-menu" class="dropdown hidden"><a href="#" class="narrow dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bookmark hidden-xs"></i><span class="visible-xs">Bookmarks <span class="caret"></span></span></a><ul class="dropdown-menu" role="menu"><li><a href="#" class="manage-bookmarks">Manage bookmarks</a></li><li><a href="#" class="save-bookmark">Bookmark this page</a></li><li><a href="#" class="sort-bookmarks">Sort bookmarks</a></li><li class="divider"></li></ul></li><li><a href="#" class="narrow setup-page"><i class="fa fa-adjust hidden-xs"></i><span class="visible-xs">Settings</span></a></li><li><form id="search-form" class="navbar-form navbar-left" method="get" action="http://duckduckgo.com/"><div class="form-group"><input id="search-input" type="text" name="q" class="form-control ui-autocomplete-input" placeholder="Search" autocomplete="off"></div></form></li></ul></div></div></div></nav><div id="content"><div class="container"><div class="row"><div class="col-xs-10 col-sm-9 col-md-9 col-lg-9 bg-white"><h1 id="-locate-">${Locate}</h1><p>Find files, directories and empty directories with mask and size options.</p><h2 id="syntax">Syntax</h2><pre><code>${Locate} &quot;[Path]&quot; &quot;[Options]&quot; &quot;Function&quot;
+
+&quot;[Path]&quot;      ; Disk or Directory
+              ;
+&quot;[Options]&quot;   ; /L=[FD|F|D|DE|FDE]
+              ;     /L=FD    - Locate Files and Directories (default)
+              ;     /L=F     - Locate Files only
+              ;     /L=D     - Locate Directories only
+              ;     /L=DE    - Locate Empty Directories only
+              ;     /L=FDE   - Locate Files and Empty Directories
+              ; /M=[mask]
+              ;     /M=*.*         - Locate all (default)
+              ;     /M=*.doc       - Locate Work.doc, 1.doc ...
+              ;     /M=Pho*        - Locate PHOTOS, phone.txt ...
+              ;     /M=win???.exe  - Locate winamp.exe, winver.exe ...
+              ;     /M=winamp.exe  - Locate winamp.exe only
+              ; /S=No:No[B|K|M|G]
+              ;     /S=      - Don&#39;t locate file size (faster) (default)
+              ;     /S=0:0B  - Locate only files of 0 Bytes exactly
+              ;     /S=5:9K  - Locate only files of 5 to 9 Kilobytes
+              ;     /S=:10M  - Locate only files of 10 Megabyte or less
+              ;     /S=1G    - Locate only files of 1 Gigabyte or more
+              ; /G=[1|0]
+              ;     /G=1     - Locate with subdirectories (default)
+              ;     /G=0     - Locate without subdirectories
+              ; /B=[0|1]
+              ;     /B=0     - Banner isn&#39;t used (default)
+              ;     /B=1     - Banner is used. Callback when function
+              ;                start to search in new directory
+&quot;Function&quot;    ; Callback function when found
+
+Function &quot;Function&quot;
+    ; $R9    &quot;path\name&quot;
+    ; $R8    &quot;path&quot;
+    ; $R7    &quot;name&quot;
+    ; $R6    &quot;size&quot;  ($R6=&quot;&quot; if directory, $R6=&quot;0&quot; if file with /S=)
+
+    ; $R0-$R5  are not used (save data in them).
+    ; ...
+
+    Push $var    ; If $var=&quot;StopLocate&quot; Then exit from function
+FunctionEnd
+</code></pre><p>Note:</p><ul><li>Error flag if disk or directory isn&#39;t exist</li><li>Error flag if syntax error</li><li>See also <a href="http://nsis.sourceforge.net/Locate_plugin">Locate plugin</a></li></ul><h2 id="examples">Examples</h2><h3 id="find-one-file">Find one file</h3><pre><code>Section
+    ${Locate} &quot;C:\ftp&quot; &quot;/L=F /M=RPC DCOM.rar /S=1K&quot; &quot;Example1&quot;
+    ; &#39;RPC DCOM.rar&#39; file in &#39;C:\ftp&#39; with size 1 Kb or more
+
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot; IDOK +2
+    MessageBox MB_OK &quot;$$R0=$R0&quot;
+SectionEnd
+
+Function Example1
+    StrCpy $R0 $R9
+    ; $R0=&quot;C:\ftp\files\RPC DCOM.rar&quot;
+
+    MessageBox MB_YESNO &#39;$R0$\n$\nFind next?&#39; IDYES +2
+    StrCpy $0 StopLocate
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="write-results-to-a-text-file">Write results to a text file</h3><pre><code>Section
+    GetTempFileName $R0
+    FileOpen $R1 $R0 w
+    ${Locate} &quot;C:\ftp&quot; &quot;/S=:2M /G=0&quot; &quot;Example2&quot;
+    ; folders and all files with size 2 Mb or less
+    ; don&#39;t scan subdirectories
+    FileClose $R1
+
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot; IDOK +2
+    Exec &#39;&quot;notepad.exe&quot; &quot;$R0&quot;&#39;
+SectionEnd
+
+Function Example2
+    StrCmp $R6 &#39;&#39; 0 +3
+    FileWrite $R1 &quot;Directory=$R9$\r$\n&quot;
+    goto +2
+    FileWrite $R1 &quot;File=$R9  Size=$R6 Mb$\r$\n&quot;
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="write-results-to-an-ini-file">Write results to an INI file</h3><pre><code>Section
+    GetTempFileName $R0
+    ${Locate} &quot;C:\ftp&quot; &quot;/L=F /S=0K&quot; &quot;Example3&quot;
+    ; all files in &#39;C:\ftp&#39; with size detect in Kb
+
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot; IDOK +2
+    Exec &#39;&quot;notepad.exe&quot; &quot;$R0&quot;&#39;
+SectionEnd
+
+Function Example3
+    WriteINIStr $R0 &quot;$R8&quot; &quot;$R7&quot; &quot;$R6 Kb&quot;
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="delete-empty-directories">Delete empty directories</h3><pre><code>Section
+    StrCpy $R2 0
+    StrCpy $R3 0
+
+    loop:
+    StrCpy $R1 0
+    ${Locate} &quot;C:\ftp&quot; &quot;/L=DE&quot; &quot;Example4&quot;
+    IntOp $R3 $R3 + 1
+    IntOp $R2 $R2 + $R1
+    StrCmp $R0 StopLocate +2
+    StrCmp $R1 0 0 loop
+
+    IfErrors 0 +2
+    MessageBox MB_OK &#39;error&#39; IDOK +2
+    MessageBox MB_OK &#39;$R2 directories were removed$\n$R3 loops&#39;
+SectionEnd
+
+Function Example4
+    MessageBox MB_YESNOCANCEL &#39;Delete empty &quot;$R9&quot;?&#39; IDNO end IDCANCEL cancel
+    RMDir $R9
+    IntOp $R1 $R1 + 1
+    goto end
+
+    cancel:
+    StrCpy $R0 StopLocate
+
+    end:
+    Push $R0
+FunctionEnd
+</code></pre><h3 id="move-all-files-into-one-folder">Move all files into one folder</h3><pre><code>Section
+    StrCpy $R0 &quot;C:\ftp&quot;   ;Directory move from
+    StrCpy $R1 &quot;C:\ftp2&quot;  ;Directory move into
+
+    StrCpy $R2 0
+    StrCpy $R3 0
+    ${Locate} &quot;$R0&quot; &quot;/L=F&quot; &quot;Example5&quot;
+
+    IfErrors 0 +2
+    MessageBox MB_OK &#39;error&#39; IDOK +4
+    StrCmp $R3 0 0 +2
+    MessageBox MB_OK &#39;$R2 files were moved&#39; IDOK +2
+    MessageBox MB_OK &#39;$R2 files were moved$\n$R3 files were NOT moved&#39;
+SectionEnd
+
+Function Example5
+    StrCmp $R8 $R1 +6
+    IfFileExists &#39;$R1\$R7&#39; +4
+    Rename $R9 &#39;$R1\$R7&#39;
+    IntOp $R2 $R2 + 1
+    goto +2
+    IntOp $R3 $R3 + 1
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="copy-files-with-log">Copy files with log</h3><pre><code>Section
+    StrCpy $R0 &quot;C:\ftp&quot;   ;Directory copy from
+    StrCpy $R1 &quot;C:\ftp2&quot;  ;Directory copy into
+    StrLen $R2 $R0
+
+    GetTempFileName $0
+    FileOpen $R3 $0 w
+    ${Locate} &quot;$R0&quot; &quot;/L=FDE&quot; &quot;Example6&quot;
+    FileClose $R3
+
+    IfErrors 0 +2
+    MessageBox MB_OK &#39;error&#39;
+
+    Exec &#39;&quot;notepad.exe&quot; &quot;$0&quot;&#39;     ;view log
+SectionEnd
+
+Function Example6
+    StrCpy $1 $R8 &#39;&#39; $R2
+
+    StrCmp $R6 &#39;&#39; 0 +3
+    CreateDirectory &#39;$R1$1\$R7&#39;
+    goto end
+    CreateDirectory &#39;$R1$1&#39;
+    CopyFiles /SILENT $R9 &#39;$R1$1&#39;
+
+    IfFileExists &#39;$R1$1\$R7&#39; 0 +3
+    FileWrite $R3 &quot;-old:$R9  -new:$R1$1\$R7  -success$\r$\n&quot;
+    goto +2
+    FileWrite $R3 &quot;-old:$R9  -new:$R1$1\$R7  -failed$\r$\n&quot;
+
+    end:
+    Push $0
+FunctionEnd
+</code></pre><h3 id="recreate-directory-structure">Recreate directory structure</h3><pre><code>Section
+    StrCpy $R0 &quot;C:\ftp&quot;     ;Directory structure from
+    StrCpy $R1 &quot;C:\ftp2&quot;    ;Directory structure into
+    StrLen $R2 $R0
+
+    ${Locate} &quot;$R0&quot; &quot;/L=D&quot; &quot;Example7&quot;
+
+    IfErrors 0 +2
+    MessageBox MB_OK &#39;error&#39;
+SectionEnd
+
+Function Example7
+    StrCpy $1 $R9 &#39;&#39; $R2
+    CreateDirectory &#39;$R1$1&#39;
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="locate-with-banner-nxs-plugin-required">Locate with banner - NxS plugin required</h3><pre><code>Section
+    nxs::Show /NOUNLOAD `$(^Name) Setup` /top `Setup searching something$\r$\nPlease wait... If you can..` /h 1 /can 1 /end
+    ${Locate} &quot;C:\WINDOWS&quot; &quot;/L=F /M=*.inf /B=1&quot; &quot;Example8&quot;
+    nxs::Destroy
+SectionEnd
+
+Function Example8
+    StrCmp $R0 $R8 abortcheck
+    StrCpy $R0 $R8
+    nxs::Update /NOUNLOAD /sub &quot;$R8&quot; /pos 78 /end
+
+    abortcheck:
+    nxs::HasUserAborted /NOUNLOAD
+    Pop $0
+    StrCmp $0 1 0 +2
+    StrCpy $0 StopLocate
+
+    StrCmp $R9 &#39;&#39; end
+    ;...
+
+    end:
+    Push $0
+FunctionEnd
+</code></pre><h2 id="credits">Credits</h2><p>Written by <a href="http://nsis.sourceforge.net/User:Instructor">Instructor</a></p></div><div class="col-xs-2 col-sm-3 col-md-3 col-lg-3 well"><ul class="nav flex-column"><li class="nav-item"><a class="nav-link" href="https://github.com/NSIS-Dev/Documentation/edit/master/Includes/FileFunc/Locate.md#ghLink"><i class="fa fa-lg fa-fw fa-edit"></i><span class="hidden-sm-down">Edit on GitHub</span></a><p class="hidden-sm-down">Help us improve this documentation by editing its sources directly on the GitHub repository.</p></li><li class="nav-item"><a class="nav-link save-bookmark" href="#save-bookmark"><i class="fa fa-lg fa-fw fa-bookmark"></i><span class="hidden-sm-down">Bookmark page</span></a><p class="hidden-sm-down">Save frequently visited pages to your browser's localStorage for quick access. Bookmarks will be available through the top menu.</p></li><li class="nav-item"><a class="nav-link to-instapaper" href="#to-instapaper"><i class="fa fa-lg fa-fw fa-thumb-tack"></i><span class="hidden-sm-down">Save to Instapaper</span></a></li></ul></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" defer="defer"></script><script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" defer="defer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" defer="defer"></script><script src="../../../assets/js/highlight.pack.js" defer="defer"></script><script src="../../../assets/js/nsis.min.js" defer="defer"></script></body></html>

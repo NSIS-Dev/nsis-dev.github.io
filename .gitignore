@@ -1,0 +1,9 @@
+node_modules/
+src/**/_.*
+todo.md
+
+# temporary
+gulpfile.old.js
+src/navbar.*
+src/views/partials/assets-*.hbs
+Documentation/README.html

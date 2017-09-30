@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><script type="text/javascript">WebFontConfig={google:{families:["Fira+Sans:300,400:latin","Fira+Mono::latin"]}},function(){var t=document.createElement("script");t.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js",t.type="text/javascript",t.async="true";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();</script><title>${LineFind} | TextFunc.nsh</title><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><link rel="prefetch" href="data/documentation.json" data-sha1=""><link rel="stylesheet" href="#default" class="hljs-theme"><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'"><link rel="preload" href="../../../assets/css/nsis.min.css" as="style" onload="this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="../../../assets/css/nsis.min.css"></noscript><script>!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);</script></head><body class="hljs-dark" data-search="data/documentation.json" data-sha1=""><nav class="navbar navbar-default navbar-fixed-top"><div id="nav-container" class="container"><div class="row"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nsis-navbar-collapse"><i class="fa fa-menu"></i></button> <a class="navbar-brand" href="../../..//index.html">NSIS</a></div><div class="collapse navbar-collapse" id="nsis-navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="#">Get started</a></li><li><a href="#">Documentation</a></li><li><a href="#">Plugins</a></li><li id="links-menu" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <span class="caret"></span></a><ul class="dropdown-menu" role="menu"><li><a href="#wiki">Wiki</a></li><li><a href="http://forums.winamp.com/forumdisplay.php?forumid=65">Forum</a></li><li><a href="#">Issues</a></li><li><a href="http://nsis-dev.tumblr.com/">Blog</a></li><li class="divider"></li><li><a href="https://github.com/NSIS-Dev">GitHub</a></li><li><a href="http://sourceforge.net/projects/nsis">SourceForge</a></li><li><a href="http://twitter.com/nsis_tweets">Twitter</a></li></ul></li><li id="bookmarks-menu" class="dropdown hidden"><a href="#" class="narrow dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bookmark hidden-xs"></i><span class="visible-xs">Bookmarks <span class="caret"></span></span></a><ul class="dropdown-menu" role="menu"><li><a href="#" class="manage-bookmarks">Manage bookmarks</a></li><li><a href="#" class="save-bookmark">Bookmark this page</a></li><li><a href="#" class="sort-bookmarks">Sort bookmarks</a></li><li class="divider"></li></ul></li><li><a href="#" class="narrow setup-page"><i class="fa fa-adjust hidden-xs"></i><span class="visible-xs">Settings</span></a></li><li><form id="search-form" class="navbar-form navbar-left" method="get" action="http://duckduckgo.com/"><div class="form-group"><input id="search-input" type="text" name="q" class="form-control ui-autocomplete-input" placeholder="Search" autocomplete="off"></div></form></li></ul></div></div></div></nav><div id="content"><div class="container"><div class="row"><div class="col-xs-10 col-sm-9 col-md-9 col-lg-9 bg-white"><h1 id="-linefind-">${LineFind}</h1><p>Find specified lines in text file, and edit or view these lines in callback function.</p><h2 id="syntax">Syntax</h2><pre><code>${LineFind} &quot;[File1]&quot; &quot;[File2|/NUL]&quot; &quot;[LineNumbers]&quot; &quot;Function&quot;
+
+&quot;[File1]&quot;         ; Input text file
+                  ;
+&quot;[File2|/NUL]&quot;    ; [File2]
+                  ;   Output text file
+                  ;   If empty then File2=File1
+                  ; [/NUL]
+                  ;   No output text file (only read File1)
+                  ;
+&quot;[LineNumbers]&quot;   ; [No|-No|No:No|{No}|{-No}|{No:No}]
+                  ;   1:-1     all lines to change (default)
+                  ;   2        second line from start
+                  ;   -3       third line from end
+                  ;   5:9      range of lines from 5 to 9
+                  ;   {2}      only second line from start to output
+                  ;   {-3}     only third line from end to output
+                  ;   {5:9}    only range of lines from 5 to 9 to output
+                  ;
+&quot;Function&quot;        ; Callback function for specified lines
+
+Function &quot;Function&quot;
+    ; $R9       current line
+    ; $R8       current line number
+    ; $R7       current line negative number
+    ; $R6       current range of lines
+    ; $R5       handle of a file opened to read
+    ; $R4       handle of a file opened to write ($R4=&quot;&quot; if &quot;/NUL&quot;)
+
+    ; you can use any string functions
+    ; $R0-$R3  are not used (save data in them).
+    ; ...
+
+    Push $var      ; If $var=&quot;StopLineFind&quot;  Then exit from function
+                   ; If $var=&quot;SkipWrite&quot;     Then skip current line (ignored if &quot;/NUL&quot;)
+FunctionEnd
+</code></pre><p>Note:</p><ul><li>Error flag if input file doesn&#39;t exist</li><li>Error flag if output file path doesn&#39;t exist</li><li>Ranges must be specified on growth (2 4:5 9:-8 -5:-4 -2:-1)</li><li>Output file will not be updated if no changes made.</li></ul><p>##Examples:</p><h3 id="delete-first-two-symbols">Delete first two symbols</h3><pre><code>Section
+    ${LineFind} &quot;C:\a.log&quot; &quot;C:\a-edited.log&quot; &quot;3:-1&quot; &quot;Example1&quot;
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot;
+SectionEnd
+
+Function Example1
+    ${TrimNewLines} &#39;$R9&#39; $R9
+    StrCpy $R9 $R9 &#39;&#39; 2
+    StrCpy $R9 &#39;$R9$\r$\n&#39;
+    ;start from 3 line and delete first two symbols
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="show-changed-lines">Show changed lines</h3><pre><code>Section
+    ${LineFind} &quot;C:\a.log&quot; &quot;a.log&quot; &quot;{5:12 15 -6:-5 -1}&quot; &quot;Example2&quot;
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot;
+SectionEnd
+
+Function Example2
+    ${TrimNewLines} &#39;$R9&#39; $R9
+    StrCpy $R9 &quot;$R9   ~Changed line ($R8)~$\r$\n&quot;
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="delete-lines">Delete lines</h3><pre><code>Section
+    ${LineFind} &quot;C:\a.log&quot; &quot;\logs\a.log&quot; &quot;2:3 10:-5 -3:-2&quot; &quot;Example3&quot;
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot;
+SectionEnd
+
+Function Example3
+    StrCpy $0 SkipWrite
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="insert-lines">Insert lines</h3><pre><code>Section
+    ${LineFind} &quot;C:\a.log&quot; &quot;&quot; &quot;10&quot; &quot;Example4
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot;
+SectionEnd
+
+Function Example4
+    FileWrite $R4 &quot;---First Line---$\r$\n&quot;
+    FileWrite $R4 &quot;---Second Line ...---$\r$\n&quot;
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="replace-in-file-with-count-of-changes-wordfunc-nsh-required">Replace in file with count of changes - &quot;WordFunc.nsh&quot; required</h3><pre><code>!include &quot;WordFunc.nsh&quot;
+
+Section
+    StrCpy $R0 0
+    ${LineFind} &quot;C:\a.log&quot; &quot;C:\logs\a.log&quot; &quot;1:-1&quot; &quot;Example5&quot;
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot; IDOK +2
+    MessageBox MB_OK &quot;Changed lines=$R0&quot;
+SectionEnd
+
+Function Example5
+    StrCpy $1 $R9
+
+    ${WordReplace} &#39;$R9&#39; &#39; &#39; &#39;_&#39; &#39;+*&#39; $R9
+
+    StrCmp $1 $R9 +2
+    IntOp $R0 $R0 + 1
+    ;$R0   count of changed lines
+
+    Push $0
+FunctionEnd
+</code></pre><h3 id="line-string-to-cut-or-delete">Line string to cut or delete</h3><pre><code>Section
+    ${LineFind} &quot;\a.log&quot; &quot;C:\logs\a.log&quot; &quot;&quot; &quot;Example6&quot;
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot; IDOK +2
+    MessageBox MB_OK &quot;Processed lines=$R1:$R2&quot;
+SectionEnd
+
+Function Example6
+    ;(Cut lines from a line to another line (also including that line))
+    StrCmp $R0 finish stop
+    StrCmp $R0 start finish
+    StrCmp $R9 &#39;Start Line$\r$\n&#39; 0 skip
+    StrCpy $R0 start
+    StrCpy $R1 $R8
+    goto code
+    finish:
+    StrCmp $R9 &#39;Finish Line$\r$\n&#39; 0 code
+    StrCpy $R0 finish
+    StrCpy $R2 $R8
+    goto code
+    skip:
+    StrCpy $0 SkipWrite
+    goto output
+    stop:
+    StrCpy $0 StopLineFind
+    goto output
+
+    ;;(Delete lines from a line to another line (also including that line))
+    ; StrCmp $R0 finish code
+    ; StrCmp $R0 start finish
+    ; StrCmp $R9 &#39;Start Line$\r$\n&#39; 0 code
+    ; StrCpy $R0 start
+    ; StrCpy $R1 $R8
+    ; goto skip
+    ; finish:
+    ; StrCmp $R9 &#39;Finish Line$\r$\n&#39; 0 skip
+    ; StrCpy $R0 finish
+    ; StrCpy $R2 $R8
+    ; skip:
+    ; StrCpy $0 SkipWrite
+    ; goto output
+
+    code:
+    ;...
+
+    output:
+    Push $0
+FunctionEnd
+</code></pre><h3 id="read-lines">Read lines</h3><pre><code>Section
+    ${LineFind} &quot;C:\a.log&quot; &quot;/NUL&quot; &quot;1:-1&quot; &quot;Example7&quot;
+    IfErrors 0 +2
+    MessageBox MB_OK &quot;Error&quot;
+SectionEnd
+
+Function Example7
+    MessageBox MB_OKCANCEL &#39;$$R9  &quot;Line&quot;=[$R9]$\n$$R8     &quot;#&quot; =[$R8]&#39; IDOK +2
+    StrCpy $0 StopLineFind
+
+    Push $0
+FunctionEnd
+</code></pre><h2 id="credits">Credits</h2><p>Written by <a href="http://nsis.sourceforge.net/User:Instructor">Instructor</a></p></div><div class="col-xs-2 col-sm-3 col-md-3 col-lg-3 well"><ul class="nav flex-column"><li class="nav-item"><a class="nav-link" href="https://github.com/NSIS-Dev/Documentation/edit/master/Includes/TextFunc/LineFind.md#ghLink"><i class="fa fa-lg fa-fw fa-edit"></i><span class="hidden-sm-down">Edit on GitHub</span></a><p class="hidden-sm-down">Help us improve this documentation by editing its sources directly on the GitHub repository.</p></li><li class="nav-item"><a class="nav-link save-bookmark" href="#save-bookmark"><i class="fa fa-lg fa-fw fa-bookmark"></i><span class="hidden-sm-down">Bookmark page</span></a><p class="hidden-sm-down">Save frequently visited pages to your browser's localStorage for quick access. Bookmarks will be available through the top menu.</p></li><li class="nav-item"><a class="nav-link to-instapaper" href="#to-instapaper"><i class="fa fa-lg fa-fw fa-thumb-tack"></i><span class="hidden-sm-down">Save to Instapaper</span></a></li></ul></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" defer="defer"></script><script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" defer="defer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" defer="defer"></script><script src="../../../assets/js/highlight.pack.js" defer="defer"></script><script src="../../../assets/js/nsis.min.js" defer="defer"></script></body></html>
