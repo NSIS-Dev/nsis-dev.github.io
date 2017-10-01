@@ -1,6 +1,7 @@
 node_modules/
 src/**/_.*
 todo.md
+Documentation/
 
 # temporary
 gulpfile.old.js
