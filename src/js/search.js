@@ -13,6 +13,9 @@ $.ajax(searchBody, {
     searchItems = contents;
   }
 }).done(function() {
+
+      localStorage.setItem('search-index', searchItems);
+
       // Search parameters?
       if (typeof $.urlParam('s') !== 'undefined') {
         searchText = $.urlParam('s');
