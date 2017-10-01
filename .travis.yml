@@ -10,7 +10,7 @@ before_deploy:
   - echo "package.json" >> .gitignore
   - echo "README.md" >> .gitignore
   - echo "src/" >> .gitignore
-  - cat .gitignore
+  - ls -l
 deploy:
   provider: pages
   skip_cleanup: true
