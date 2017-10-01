@@ -2,6 +2,7 @@
 node_modules/
 bower_components/
 vendor/
+package-lock.json
 
 # Built on Travis CI
 assets/
