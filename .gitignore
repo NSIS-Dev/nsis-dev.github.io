@@ -3,12 +3,12 @@ node_modules/
 bower_components/
 vendor/
 package-lock.json
-
 # Built on Travis CI
 assets/
 Documentation/
 index.html
 
 # Project specific
+sitemap.xml
 src/**/_.*
 todo.md
