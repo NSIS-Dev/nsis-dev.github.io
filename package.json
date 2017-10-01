@@ -38,7 +38,7 @@
     "yargs": "^6.0.0"
   },
   "scripts": {
-    "build": "node ./node_modules/.bin/gulp build",
+    "build": "node ./node_modules/.bin/gulp build && node ./node_modules/.bin/gulp build:map",
     "postinstall": "node ./node_modules/.bin/gulp build:hljs",
     "start": "node ./node_modules/.bin/http-server ./"
   }
