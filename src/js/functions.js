@@ -45,7 +45,7 @@ function docsPage() {
 function duckDuckGo() {
   transformPage();
   searchText = $("#search-input").val();
-  injectFrame("https://duckduckgo.com/?sites=https://nsis.sourceforge.io&ka=h&k7=%23f5f4f3&kj=%236f6171&ky=%23ffffff&kx=b&kt=Segoe+UI&q="+searchText);
+  injectFrame(searchText);
   // saveSearch(searchText);
 }
 
@@ -149,7 +149,7 @@ var getBookmarks = function() {
 // body = $('.navbar>div:not(.container-fluid)').children();
 function injectFrame(src) {
   // $('.navbar>div').replaceWith(body);
-  $("#content").replaceWith("<div id=\"content\" style=\"position:absolute\"><iframe width=\"100%\" height=\"100%\" frameBorder=\"0\" src=\""+src+"\"></iframe></div>");
+  $("#content").replaceWith("<div id=\"content\" style=\"position:absolute\"><iframe width=\"100%\" height=\"100%\" frameBorder=\"0\" src=\"https://duckduckgo.com/?sites=nsis.sourceforge.net&ka=h&k7=%23f5f4f3&kj=%236f6171&ky=%23ffffff&kx=b&kt=Segoe+UI&q=+src+"\"></iframe></div>");
 }
 
 function transformPage() {
