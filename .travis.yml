@@ -11,8 +11,9 @@ before_deploy:
   - echo "README.md" >> .gitignore
   - echo "src/" >> .gitignore
   - yarn build
-  - ls -l
-  - git status
+  - git add Documentation assets
+  - git commit -m "rebuild"
+  - git push
 deploy:
   provider: pages
   skip_cleanup: true
