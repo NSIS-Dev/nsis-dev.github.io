@@ -1,0 +1,7 @@
+# Created on Travis CI
+*.lock
+Documentation/README.html
+gulpfile.js
+node_modules/
+README.md
+src/

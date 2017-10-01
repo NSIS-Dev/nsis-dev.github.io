@@ -1,0 +1,27 @@
+sudo: false
+language: node_js
+node_js:
+  - "lts/*"
+before_deploy:
+  - echo "# Created on Travis CI" > .gitignore
+  - echo "*.lock" >> .gitignore
+  - echo "Documentation/README.html" >> .gitignore
+  - echo "gulpfile.js" >> .gitignore
+  - echo "node_modules/" >> .gitignore
+  - echo "README.md" >> .gitignore
+  - echo "src/" >> .gitignore
+  - yarn build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  target_branch: master
+  on:
+    branch: dev
+git:
+  depth: 1
+branches:
+  only:
+  - dev
+notifications:
+  email: false
