@@ -11,6 +11,7 @@ before_deploy:
   - echo "README.md" >> .gitignore
   - echo "src/" >> .gitignore
   - yarn build
+  - ls -l
 deploy:
   provider: pages
   skip_cleanup: true
