@@ -3,7 +3,7 @@ language: node_js
 node_js:
   - "lts/*"
 before_deploy:
-  - echo "# Created by .travis.yaml" > .gitignore
+  - echo "# Created on Travis CI" > .gitignore
   - echo "*.lock" >> .gitignore
   - echo "Documentation/README.html" >> .gitignore
   - echo "gulpfile.js" >> .gitignore
