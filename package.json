@@ -32,6 +32,7 @@
     "mozilla-fira-pack": "0.0.1",
     "nsis-bootstrap-v3": "github:idleberg/nsis-bootstrap-v3",
     "nsis-docs": "github:NSIS-Dev/Documentation#master",
+    "nsis-fontawesome": "github:idleberg/nsis-fontawesome",
     "nsis-highlight.js": "github:idleberg/nsis-highlight.js",
     "nsis-logo-v3": "github:idleberg/nsis-logo-v3",
     "yaml": "^0.3.0",

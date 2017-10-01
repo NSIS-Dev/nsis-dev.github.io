@@ -145,6 +145,7 @@ gulp.task('build:docs', gulp.series( (done) => {
             }
 
             parent = path.dirname(file.path.substr(__filename.length + 1)).replace("/nsis-docs/", "");
+            console.log(parent);
             data.relativePath = path.join(parent, data.prettyName);
             data.version = meta.version;
 

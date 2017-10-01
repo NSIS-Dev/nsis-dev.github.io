@@ -45,7 +45,7 @@ function docsPage() {
 function duckDuckGo() {
   transformPage();
   searchText = $("#search-input").val();
-  injectFrame("https://duckduckgo.com/?sites=nsis.sourceforge.net&ka=h&k7=%23f5f4f3&kj=%236f6171&ky=%23ffffff&kx=b&kt=Segoe+UI&q="+searchText);
+  injectFrame("https://duckduckgo.com/?sites=https://nsis.sourceforge.io&ka=h&k7=%23f5f4f3&kj=%236f6171&ky=%23ffffff&kx=b&kt=Segoe+UI&q="+searchText);
   // saveSearch(searchText);
 }
 
