@@ -9,7 +9,8 @@ deploy:
   on:
     branch: master
 install:
-  - echo "Installing…"
+  - echo "src\nnodemodules" > .gitignore
+  - cat .gitignore
 git:
   depth: 1
 branches:
