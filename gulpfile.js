@@ -18,6 +18,7 @@ const tap = require('gulp-tap');
 const uglify = require('gulp-uglify');
 // const notify = require('gulp-notify');
 const markdown = require('gulp-markdown');
+const sitemap = require('gulp-sitemap');
 const path = require('path');
 const fs = require('fs');
 const hasha = require('hasha');
@@ -43,9 +44,9 @@ if (argv.minify == 'false') {
 
 // Supported files
 const docMarkdown = [
+    './node_modules/nsis-docs/**/*.md',
     '!./node_modules/nsis-docs/README.md',
     '!./node_modules/nsis-docs/Plugins/*.md',
-    './node_modules/nsis-docs/**/*.md',
 ];
 
 const cssFiles = [
@@ -68,6 +69,12 @@ const jsFiles = [
     './src/js/init.js'
 ];
 
+const mappedFiles = [
+    './**/*.html',
+    '!Documentation/README.html',
+    '!node_modules/**/*.html',
+];
+
 // Concat & Uglify JS
 gulp.task('build:js', gulp.series( (done) => {
     gulp.src(jsFiles)
@@ -83,7 +90,7 @@ gulp.task('build:js', gulp.series( (done) => {
 // Build Index Page
 gulp.task('build:index', gulp.series( (done) => {
     gulp.src('src/views/index.hbs')
-    .pipe(tap(function(file) {
+    .pipe(tap( (file) => {
       template = handlebars.compile(file.contents.toString());
       html = template(meta);
       file.contents = new Buffer(html, "utf-8");
@@ -91,6 +98,18 @@ gulp.task('build:index', gulp.series( (done) => {
     .pipe(htmlmin({collapseWhitespace: minifyHtml}))
     .pipe(concat('index.html'))
     .pipe(debug({title: 'build:index'}))
+    .pipe(gulp.dest('./'));
+
+    done();
+}));
+
+gulp.task('build:map', gulp.series( (done) => {
+    gulp.src(mappedFiles, {
+        read: false
+    })
+    .pipe(sitemap({
+        siteUrl: 'https://nsis-dev.github.io'
+    }))
     .pipe(gulp.dest('./'));
 
     done();
