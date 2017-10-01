@@ -4,16 +4,13 @@ node_js:
   - "lts/*"
 before_deploy:
   - echo "# Created by .travis.yaml" > .gitignore
-  - echo "*.lock.js" >> .gitignore
+  - echo "*.lock" >> .gitignore
   - echo "Documentation/README.html" >> .gitignore
   - echo "gulpfile.js" >> .gitignore
   - echo "node_modules/" >> .gitignore
   - echo "README.md" >> .gitignore
   - echo "src/" >> .gitignore
   - yarn build
-  - git add Documentation assets
-  - git commit -m "rebuild"
-  - git push origin HEAD:gh-pages
 deploy:
   provider: pages
   skip_cleanup: true
