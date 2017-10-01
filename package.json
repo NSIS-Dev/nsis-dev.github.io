@@ -39,7 +39,7 @@
   },
   "scripts": {
     "build": "node ./node_modules/.bin/gulp build",
-    "postinstall": "node ./node_modules/.bin/gulp build:hljs && npm run build",
+    "postinstall": "node ./node_modules/.bin/gulp build:hljs",
     "start": "node ./node_modules/.bin/http-server ./"
   }
 }

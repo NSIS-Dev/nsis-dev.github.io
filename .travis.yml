@@ -5,11 +5,12 @@ node_js:
 before_deploy:
   - echo "# Created by .travis.yaml" > .gitignore
   - echo "*.lock.js" >> .gitignore
+  - echo "Documentation/README.html" >> .gitignore
   - echo "gulpfile.js" >> .gitignore
   - echo "node_modules/" >> .gitignore
   - echo "README.md" >> .gitignore
   - echo "src/" >> .gitignore
-  - ls -l
+  - yarn build
 deploy:
   provider: pages
   skip_cleanup: true
