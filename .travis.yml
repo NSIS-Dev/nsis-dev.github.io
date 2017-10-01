@@ -8,13 +8,8 @@ deploy:
   github_token: $GITHUB_TOKEN
   on:
     branch: master
-# install:
-#   - npm install
-#   - gulp build
-#   - git remote set-url origin git@github.com:idleberg/nsis-build-web.git
-#   - git add Documentation/
-#   - git commit -m "rebuild from source"
-#   - git push origin HEAD:master
+install:
+  - echo "Installing…"
 git:
   depth: 1
 branches:
