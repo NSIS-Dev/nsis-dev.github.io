@@ -1732,7 +1732,7 @@ npmlog@^4.0.2:
 
 "nsis-bootstrap-v3@github:idleberg/nsis-bootstrap-v3":
   version "0.0.0"
-  resolved "https://codeload.github.com/idleberg/nsis-bootstrap-v3/tar.gz/b47679e9fee1057d655f6d2b72a07560aede3dac"
+  resolved "https://codeload.github.com/idleberg/nsis-bootstrap-v3/tar.gz/92d6132d1e721ea425bb4cdad0595e12d11c822d"
   dependencies:
     bootstrap "^3.3.7"
     jquery "^3.1.1"
