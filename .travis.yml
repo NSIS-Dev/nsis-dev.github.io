@@ -13,7 +13,7 @@ before_deploy:
   - yarn build
   - git add Documentation assets
   - git commit -m "rebuild"
-  - git push
+  - git push origin HEAD:gh-pages
 deploy:
   provider: pages
   skip_cleanup: true
