@@ -3,8 +3,8 @@
 
 
 abbrev@1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
 
 ajv@^4.9.1:
   version "4.11.8"
@@ -1731,8 +1731,8 @@ npmlog@^4.0.2:
     set-blocking "~2.0.0"
 
 "nsis-bootstrap-v3@github:idleberg/nsis-bootstrap-v3":
-  version "0.1.0"
-  resolved "https://codeload.github.com/idleberg/nsis-bootstrap-v3/tar.gz/bf5aecd7d825fbae39f3ff17f9bf009fbd9c6b67"
+  version "0.0.0"
+  resolved "https://codeload.github.com/idleberg/nsis-bootstrap-v3/tar.gz/a06f8009f7bc15c712bb6fc8f1cc2b425794e458"
   dependencies:
     bootstrap "^3.3.7"
     jquery "^3.1.1"
@@ -1742,16 +1742,12 @@ npmlog@^4.0.2:
   resolved "https://codeload.github.com/NSIS-Dev/Documentation/tar.gz/f8800e21ae21eec9ea194ef44f02c8a89d4b84ff"
 
 "nsis-fontawesome@github:idleberg/nsis-fontawesome":
-  version "0.1.0"
-  resolved "https://codeload.github.com/idleberg/nsis-fontawesome/tar.gz/8af4998bd2606c22392d4eec9396270ebb13bded"
-
-"nsis-highlight.js@github:idleberg/nsis-fontawesome":
-  version "0.1.0"
-  resolved "https://codeload.github.com/idleberg/nsis-fontawesome/tar.gz/30de0ffbced35ae6fdd7e0bb556b3931f0ebd596"
+  version "0.0.0"
+  resolved "https://codeload.github.com/idleberg/nsis-fontawesome/tar.gz/cc65c0afa91f921f7a48dc3b79da814bb60e0ea0"
 
 "nsis-highlight.js@github:idleberg/nsis-highlight.js":
-  version "0.1.0"
-  resolved "https://codeload.github.com/idleberg/nsis-highlight.js/tar.gz/cb4676f918fa51af0bcca21eaa6539dfb92c0daa"
+  version "0.0.0"
+  resolved "https://codeload.github.com/idleberg/nsis-highlight.js/tar.gz/812b0d33b17ca47a73234b226b2eced33c9aa98f"
 
 "nsis-logo-v3@github:idleberg/nsis-logo-v3":
   version "0.0.0"
@@ -2404,8 +2400,8 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
 
 uglify-js@3.1.x, uglify-js@^3.0.5:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.1.2.tgz#b50bcf15a5fd9e9ed40afbcdef3b59d6891b291f"
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.1.3.tgz#d61f0453b4718cab01581f3162aa90bab7520b42"
   dependencies:
     commander "~2.11.0"
     source-map "~0.5.1"
