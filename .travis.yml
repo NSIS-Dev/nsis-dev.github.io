@@ -3,8 +3,13 @@ language: node_js
 node_js:
   - "lts/*"
 before_deploy:
-  - echo "src/" > .gitignore
+  - echo "# Created by .travis.yaml" > .gitignore
+  - echo "*.lock.js" >> .gitignore
+  - echo "gulpfile.js" >> .gitignore
   - echo "node_modules/" >> .gitignore
+  - echo "package.json" >> .gitignore
+  - echo "README.md" >> .gitignore
+  - echo "src/" >> .gitignore
   - cat .gitignore
 deploy:
   provider: pages
