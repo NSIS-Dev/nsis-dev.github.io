@@ -1732,18 +1732,22 @@ npmlog@^4.0.2:
 
 "nsis-bootstrap-v3@github:idleberg/nsis-bootstrap-v3":
   version "0.1.0"
-  resolved "https://codeload.github.com/idleberg/nsis-bootstrap-v3/tar.gz/64e3be7c9862cb287c0fcd0943afedec88d74d2d"
+  resolved "https://codeload.github.com/idleberg/nsis-bootstrap-v3/tar.gz/085643c407ab1d048def853ceefd53ff0a8bf263"
   dependencies:
     bootstrap "^3.3.7"
     jquery "^3.1.1"
 
 "nsis-docs@github:NSIS-Dev/Documentation#master":
   version "0.0.0"
-  resolved "https://codeload.github.com/NSIS-Dev/Documentation/tar.gz/61679222cce3047b17d14c616c8d763dfe8bf3e2"
+  resolved "https://codeload.github.com/NSIS-Dev/Documentation/tar.gz/f8800e21ae21eec9ea194ef44f02c8a89d4b84ff"
 
 "nsis-fontawesome@github:idleberg/nsis-fontawesome":
   version "0.1.0"
   resolved "https://codeload.github.com/idleberg/nsis-fontawesome/tar.gz/8af4998bd2606c22392d4eec9396270ebb13bded"
+
+"nsis-highlight.js@github:idleberg/nsis-fontawesome":
+  version "0.1.0"
+  resolved "https://codeload.github.com/idleberg/nsis-fontawesome/tar.gz/30de0ffbced35ae6fdd7e0bb556b3931f0ebd596"
 
 "nsis-highlight.js@github:idleberg/nsis-highlight.js":
   version "0.1.0"
