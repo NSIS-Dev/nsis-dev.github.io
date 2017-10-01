@@ -20,6 +20,7 @@ const uglify = require('gulp-uglify');
 const markdown = require('gulp-markdown');
 const path = require('path');
 const fs = require('fs');
+const hasha = require('hasha');
 
 var partialsDir = __dirname + '/src/views/partials';
 var filenames = fs.readdirSync(partialsDir);
@@ -42,29 +43,29 @@ if (argv.minify == 'false') {
 
 // Supported files
 const docMarkdown = [
-    '!node_modules/nsis-docs/Plugins/*.md',
-    '!node_modules/nsis-docs/README.md',
-    'node_modules/nsis-docs/**/*.md'
+    '!./node_modules/nsis-docs/README.md',
+    '!./node_modules/nsis-docs/Plugins/*.md',
+    './node_modules/nsis-docs/**/*.md',
 ];
 
 const cssFiles = [
-    'node_modules/nsis-bootstrap-v3/dist/css/theme.min.css',
-    'node_modules/nsis-fontawesome/css/fontawesome.min.css',
-    'node_modules/nsis-highlight.js/dist/highlight.min.css'
+    './node_modules/nsis-bootstrap-v3/dist/css/theme.min.css',
+    './node_modules/nsis-fontawesome/css/fontawesome.min.css',
+    './node_modules/nsis-highlight.js/dist/highlight.min.css'
 ];
 
 const jsFiles = [
-    'src/js/functions.js',
-    'src/js/hash.js',
-    'src/js/modal.js',
-    'src/js/bookmarks.js',
-    'src/js/preferences.js',
-    'src/js/manager.js',
-    'src/js/keyboard.js',
-    'src/js/highlight.js',
-    'src/js/share.js',
-    'src/js/search.js',
-    'src/js/init.js'
+    './src/js/functions.js',
+    './src/js/hash.js',
+    './src/js/modal.js',
+    './src/js/bookmarks.js',
+    './src/js/preferences.js',
+    './src/js/manager.js',
+    './src/js/keyboard.js',
+    './src/js/highlight.js',
+    './src/js/share.js',
+    './src/js/search.js',
+    './src/js/init.js'
 ];
 
 // Concat & Uglify JS
@@ -131,14 +132,14 @@ gulp.task('deploy:js', gulp.series( (done) => {
 
 gulp.task('build:docs', gulp.series( (done) => {
     gulp.src('src/views/docs.hbs')
-    .pipe(tap(function(file) {
+    .pipe(tap( (file) => {
         let count, html;
 
         let template = handlebars.compile(file.contents.toString());
 
         gulp.src(docMarkdown)
         .pipe(markdown())
-        .pipe(tap(function(file) {
+        .pipe(tap( (file) => {
 
             let data = transformDocs(file.path);
 
@@ -216,34 +217,28 @@ function transformDocs(filePath) {
     if (data.dirName.endsWith('Callbacks') && data.prettyName.startsWith("on")) {
         data.name = "." + data.prettyName;
         data.type = "Function";
-        data.pageTitle.push(data.bundle);
     } else if (data.dirName.endsWith('Callbacks') && data.prettyName.startsWith("un.on")) {
         data.name = data.prettyName;
         data.type = "Function";
-        data.pageTitle.push(data.bundle);
     } else if (data.prettyName.startsWith("__") && data.prettyName.endsWith("__")) {
         data.name = "${" + data.prettyName + "}";
         data.type = "Constant";
-        data.pageTitle.push(data.bundle);
     } else if (data.prettyName.startsWith("NSIS") && data.dirName.endsWith('Variables')) {
         data.name = "${" + data.prettyName + "}";
         data.type = "Constant";
-        data.pageTitle.push(data.bundle);
     }  else if (data.dirName.endsWith('Variables')) {
         data.name = "$" + data.prettyName;
         data.type = "Variable";
-        data.pageTitle.push(data.bundle);
     } else if (data.dirName.startsWith('html/Includes')) {
         data.name = "${" + data.prettyName + "}";
         data.type = "Library";
         data.bundle = path.basename(data.dirName + ".nsh");
-        data.pageTitle.push(data.bundle);
     } else {
         data.name = data.prettyName;
         data.type = "Command";
-        data.pageTitle.push(data.bundle);
     }
 
+    data.pageTitle.push(data.bundle);
     data.pageTitle.push(data.name);
     data.pageTitle = data.pageTitle.reverse().join(" | ");
 
@@ -261,7 +256,6 @@ gulp.task('build', gulp.parallel(
     'build:js',
     'build:docs',
     (done) => {
-
         done();
     }
 ));
