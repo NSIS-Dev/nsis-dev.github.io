@@ -15,13 +15,14 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
+  target_branch: master
   on:
-    branch: master
+    branch: dev
 git:
   depth: 1
 branches:
   only:
-  - master
+  - dev
 cache:
   timeout: 1800
   yarn: true
