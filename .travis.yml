@@ -12,6 +12,7 @@ before_deploy:
   - echo "src/" >> .gitignore
   - yarn build
   - ls -l
+  - git status
 deploy:
   provider: pages
   skip_cleanup: true
