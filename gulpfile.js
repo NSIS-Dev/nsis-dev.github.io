@@ -49,6 +49,7 @@ const docMarkdown = [
 
 const cssFiles = [
     'node_modules/nsis-bootstrap-v3/dist/css/theme.min.css',
+    'node_modules/nsis-fontawesome/css/fontawesome.min.css',
     'node_modules/nsis-highlight.js/dist/highlight.min.css'
 ];
 
@@ -103,6 +104,14 @@ gulp.task('deploy:css', gulp.series( (done) => {
     done();
 }));
 
+// Deploy custom Font Awesome
+gulp.task('deploy:fonts', gulp.series( (done) => {
+    gulp.src('node_modules/nsis-fontawesome/fonts/*.*')
+    .pipe(gulp.dest('./assets/fonts'));
+
+    done();
+}));
+
 // Deploy pre-built SVG
 gulp.task('deploy:svg', gulp.series( (done) => {
     gulp.src('node_modules/nsis-logo-v3/dist/Logo/outlines-light.svg')
@@ -145,7 +154,6 @@ gulp.task('build:docs', gulp.series( (done) => {
             }
 
             parent = path.dirname(file.path.substr(__filename.length + 1)).replace("/nsis-docs/", "");
-            console.log(parent);
             data.relativePath = path.join(parent, data.prettyName);
             data.version = meta.version;
 
@@ -245,8 +253,9 @@ function transformDocs(filePath) {
 
 // Available tasks
 gulp.task('build', gulp.parallel(
-    'deploy:js',
     'deploy:css',
+    'deploy:fonts',
+    'deploy:js',
     'deploy:svg',
     'build:index',
     'build:js',

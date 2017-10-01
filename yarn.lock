@@ -1747,6 +1747,10 @@ npmlog@^4.0.2:
   version "0.0.0"
   resolved "https://codeload.github.com/NSIS-Dev/Documentation/tar.gz/61679222cce3047b17d14c616c8d763dfe8bf3e2"
 
+"nsis-fontawesome@github:idleberg/nsis-fontawesome":
+  version "0.1.0"
+  resolved "https://codeload.github.com/idleberg/nsis-fontawesome/tar.gz/8af4998bd2606c22392d4eec9396270ebb13bded"
+
 "nsis-highlight.js@github:idleberg/nsis-highlight.js":
   version "0.1.0"
   resolved "https://codeload.github.com/idleberg/nsis-highlight.js/tar.gz/cb4676f918fa51af0bcca21eaa6539dfb92c0daa"
