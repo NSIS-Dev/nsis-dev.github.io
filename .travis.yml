@@ -23,10 +23,10 @@ git:
 branches:
   only:
   - dev
-cache:
-  timeout: 1800
-  yarn: true
-  directories:
-    - node_modules
+# cache:
+#   timeout: 1800
+#   yarn: true
+#   directories:
+#     - node_modules
 notifications:
   email: false
