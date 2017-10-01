@@ -3,7 +3,7 @@ language: node_js
 node_js:
   - "lts/*"
 before_deploy:
-  - echo "src/"" > .gitignore
+  - echo "src/" > .gitignore
   - echo "node_modules/" >> .gitignore
   - cat .gitignore
 deploy:
