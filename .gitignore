@@ -1,8 +1,8 @@
 node_modules/
 src/**/_.*
 todo.md
-assets/
-Documentation/
+#assets/
+#Documentation/
 
 # temporary
 src/navbar.*
