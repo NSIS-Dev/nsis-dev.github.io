@@ -1,9 +1,10 @@
+#  Package managers
 node_modules/
-src/**/_.*
-todo.md
+bower_components/
+vendor/
+
+# Project specific
 assets/
 Documentation/
-
-# temporary
-src/navbar.*
-src/views/partials/assets-*.hbs
+src/**/_.*
+todo.md
